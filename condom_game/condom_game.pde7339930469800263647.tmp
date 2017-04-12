@@ -1,0 +1,57 @@
+//earth
+Earth earth;
+//controller
+Controller controller;
+//enemies
+Enemy[] enemies;
+//score
+int counter;
+boolean count= false;
+
+//count down
+
+void setup() {
+  fullScreen();
+  smooth();
+
+  //earth
+  earth=new Earth(width/2, height/2, 50, 253, 23, 233);
+  //controller
+  controller = new Controller(30);
+  //enemies
+  enemies = new Enemy[50];
+  for (int i=0; i<50; i++) {
+    enemies[i]=new Enemy(random(width), random(height), random(2, 10), random(1, 3), random(1, 3), earth.posX, earth.posY);
+  }
+}
+
+void draw() {
+  background(51);
+  earth.run();
+  controller.run();
+  for (Enemy en : enemies) {
+    en.run();
+  }
+
+  ////////////////////////// Counter ////////////////////////////////////////////////////////////////////////////////
+  text(counter, 20, 20);
+
+  for (int i=0; i<50; i++) {
+
+    float d2 = dist(mouseX, mouseY, enemies[i].posX, enemies[i].posY);//distance between controller and enemies
+
+    if (d2<30) {
+      enemies[i].posXX= -100;
+    }
+
+    if (enemies[i].posXX== -100) {
+      counter++;
+      enemies[i].posXX=100;
+    }
+  }
+  //////////////////////// END Counter //////////////////////////
+
+  ////////////////////////// Count Down /////////////////////////////////////////////////////////////////////////////
+  
+  
+}//end draw

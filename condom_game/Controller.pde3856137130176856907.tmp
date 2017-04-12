@@ -1,0 +1,30 @@
+//////////////////////////////////////////////////////// Controller class ///////////////////////////////////////////
+class Controller {
+  float rad;
+  PImage condomImg;
+
+  Controller(float _r, PImage _condomImg) {
+    rad=_r;
+    condomImg =_condomImg;
+  }
+
+  void run() {
+    create();
+  }
+
+  void create() {
+    noCursor();
+    noFill();
+    strokeWeight(2);
+    stroke(255, 0, 255);
+    imageMode(CENTER);
+    image(condomImg, mouseX, mouseY);
+    ellipseMode(CENTER);
+    //small top ellipse
+    ellipse(mouseX, mouseY-40, 25, 30);
+    //big center ellipse
+    ellipse(mouseX, mouseY, rad*2, rad*2);
+    //big bottom ellipse
+    ellipse(mouseX, mouseY-40, 25, 30);
+  }
+}

@@ -1,0 +1,30 @@
+
+void setup() {
+  size(200, 200);
+
+
+  translate(width/2, height/2);
+  rotate(random(TWO_PI));
+
+
+
+  noStroke();
+  ellipseMode(CENTER);
+  ellipse(0, 0, 30, 50);
+  ellipse(0, 20, 15, 30);
+
+
+  noFill();
+  stroke(255);
+  strokeWeight(4);
+
+  bezier(0, 30, 10, 50, 20, 50, 0, 70);
+  //curve(10, 100, width/2, height/2+30, width/2, height/2+60, 0, 200); 
+  //////start//1 point//second //end
+}
+
+void draw() {
+  println("X" + mouseX);
+
+  println("Y" + mouseY);
+}

@@ -1,0 +1,52 @@
+//////////////////////////////////////////////////// Earth class ///////////////////////////////////////////
+class Earth {
+  float posX, posY, rad, cR, cG, cB;
+  PImage eggImg;
+  int checkEgg;
+
+  //have all functions run by one function
+  Earth (float _x, float _y, float _r, float _cR, float _cG, float _cB, PImage _eggImg) {
+    posX=_x;
+    posY=_y;
+    rad=_r;
+    cR=_cR;
+    cG= _cG;
+    cB=_cB;
+    eggImg= _eggImg;
+  }
+  void run() {
+    create();
+    test();
+  }
+  //create the earth
+  void create() {
+    noStroke();
+    fill(20, 200, 255);//20, 200, 39
+
+    //noFill();
+    //strokeWeight(4);
+    //stroke(random(255),random(150, 255),random(200, 255));
+    image(eggImg, posX, posY);
+
+    // ellipseMode(CENTER);
+    //ellipse(posX, posY, rad*2, rad*2);
+  }
+
+  void test() {
+
+    /////////////////////////////// Display images when hit by sperm ////////////////////////
+    for (int i=0; i<enemyUnit; i++) {
+
+      float d1 = dist(posX, posY, enemies[i].posX, enemies[i].posY);//distance between earth and enemies
+
+
+      if (d1<69) {
+        eggImg= loadImage("data/egg2.png");
+        checkEgg=1;
+      } 
+      if (d1<69 && checkEgg==1) {
+        eggImg= loadImage("data/egg3.png");
+      }
+    }
+  }
+}
